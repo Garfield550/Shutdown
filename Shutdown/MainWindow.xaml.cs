@@ -34,11 +34,13 @@ namespace Shutdown
         private void buttonShutdown_Click(object sender, RoutedEventArgs e)
         {
             Shutdown("8", "0");
+            Application.Current.Shutdown();
         }
 
         private void buttonReboot_Click(object sender, RoutedEventArgs e)
         {
             Shutdown("2", "0");
+            Application.Current.Shutdown();
         }
 
         [DllImport("user32.dll", SetLastError = true)]
@@ -46,6 +48,7 @@ namespace Shutdown
         private void buttonLock_Click(object sender, RoutedEventArgs e)
         {
             LockWorkStation();
+            Application.Current.Shutdown();
         }
 
         [DllImport("Powrprof.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
@@ -53,6 +56,7 @@ namespace Shutdown
         private void buttonHibernate_Click(object sender, RoutedEventArgs e)
         {
             SetSuspendState(true, true, true);
+            Application.Current.Shutdown();
         }
     }
 }

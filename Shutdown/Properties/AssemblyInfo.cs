@@ -8,12 +8,12 @@ using System.Windows;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("Shutdown")]
-[assembly: AssemblyDescription("Shutdown your computer")]
+[assembly: AssemblyDescription("Simple tool for Windows.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("550.moe")]
 [assembly: AssemblyProduct("Shutdown")]
 [assembly: AssemblyCopyright("Copyright ©  2016 550.moe")]
-[assembly: AssemblyTrademark("550.moe")]
+[assembly: AssemblyTrademark("Garfield550")]
 [assembly: AssemblyCulture("")]
 
 //将 ComVisible 设置为 false 将使此程序集中的类型
@@ -51,5 +51,5 @@ using System.Windows;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0411.2")]
-[assembly: AssemblyFileVersion("1.0.0411.2")]
+[assembly: AssemblyVersion("1.1.0411.0")]
+[assembly: AssemblyFileVersion("1.1.0411.0")]
