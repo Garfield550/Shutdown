@@ -34,13 +34,11 @@ namespace Shutdown
         private void buttonShutdown_Click(object sender, RoutedEventArgs e)
         {
             Shutdown("8", "0");
-            Application.Current.Shutdown();
         }
 
         private void buttonReboot_Click(object sender, RoutedEventArgs e)
         {
             Shutdown("2", "0");
-            Application.Current.Shutdown();
         }
 
         [DllImport("user32.dll", SetLastError = true)]
