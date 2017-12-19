@@ -1,12 +1,9 @@
-﻿using System.Windows;
-using System.Management;
-using System.Runtime.InteropServices;
-
-namespace Shutdown
+﻿namespace Shutdown
 {
-    /// <summary>
-    /// MainWindow.xaml 的交互逻辑
-    /// </summary>
+    using System.Windows;
+    using System.Runtime.InteropServices;
+    using System.Management;
+
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -14,7 +11,7 @@ namespace Shutdown
             InitializeComponent();
         }
 
-        public void Shutdown(string flags, string reserved)
+        private static void Win32Shutdown(uint flags, uint reserved)
         {
             ManagementBaseObject mboShutdown = null;
             ManagementClass mcWin32 = new ManagementClass("Win32_OperatingSystem");
@@ -31,27 +28,23 @@ namespace Shutdown
             }
         }
 
-        private void buttonShutdown_Click(object sender, RoutedEventArgs e)
-        {
-            Shutdown("8", "0");
-        }
+        private void ButtonShutdownClick(object sender, RoutedEventArgs e) => Win32Shutdown(8, 0);
 
-        private void buttonReboot_Click(object sender, RoutedEventArgs e)
-        {
-            Shutdown("2", "0");
-        }
+        private void ButtonRebootClick(object sender, RoutedEventArgs e) => Win32Shutdown(2, 0);
 
-        [DllImport("user32.dll", SetLastError = true)]
-        public static extern bool LockWorkStation();
-        private void buttonLock_Click(object sender, RoutedEventArgs e)
+        [DllImport("user32")]
+        private static extern void LockWorkStation();
+
+        private void ButtonLockClick(object sender, RoutedEventArgs e)
         {
             LockWorkStation();
             Application.Current.Shutdown();
         }
 
         [DllImport("Powrprof.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
-        public static extern bool SetSuspendState(bool hiberate, bool forceCritical, bool disableWakeEvent);
-        private void buttonHibernate_Click(object sender, RoutedEventArgs e)
+        private static extern void SetSuspendState(bool hiberate, bool forceCritical, bool disableWakeEvent);
+
+        private void ButtonHibernateClick(object sender, RoutedEventArgs e)
         {
             SetSuspendState(true, true, true);
             Application.Current.Shutdown();
